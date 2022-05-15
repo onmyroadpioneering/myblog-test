@@ -15,9 +15,16 @@
 
     </div>
     <hr>
-    <transition name="routeview">
-          <router-view v-show="flag"></router-view>
-    </transition>
+    <router-view v-slot="{ Component, route }" v-show="flag">
+      <transition :name="route.meta.transition || 'routeview'" mode="out-in">
+        <keep-alive>
+          <component
+            :is="Component"
+            :key="route.meta.usePathKey ? route.path : undefined"
+          />
+        </keep-alive>
+      </transition>
+    </router-view>
 
     <transition name="resume">
       <div v-show="!flag">
@@ -45,6 +52,7 @@ export default {
           flag
       }
   }
+  ,
 }
 </script>
 

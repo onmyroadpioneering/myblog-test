@@ -2,12 +2,16 @@
   <div id="d">
     <input type="text" v-model="past" />
     <br />
-    <div id="content">
-      <textarea name="message" id="message" style="border:0;border-radius:5px;background-color:rgba(255, 249, 240, 0);width: 100%;height: 90%;padding: 10px;resize: none;border-style: none;outline: none;font-size:20px;" v-model="message"></textarea>
+    <div id="todoson">
 
     </div>
+    <div id="content">
+      <textarea name="message" id="message" style="border:0;border-radius:5px;background-color:rgba(255, 249, 240, 0);width: 100%;height: 50%;padding: 10px;resize: none;border-style: none;outline: none;font-size:20px;" v-model="message"></textarea>
+      
+    </div>
+    
     <div id="butt">
-      <button @click="updateTodo">保存</button>
+      <button @click="updateTodo" id="bu">保存</button>
     </div>
   </div>
 </template>
@@ -17,6 +21,8 @@ export default {
   props: {
     id: String,
   },
+  components:{
+},
   data() {
     return {
       past:"",
@@ -75,7 +81,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #d {
   position: relative;
   height: 100%;
@@ -92,6 +98,7 @@ input {
   font-size: 30px;
   outline: none;
 }
+
 #butt {
   position: relative;
   bottom: 0%;
@@ -100,18 +107,23 @@ input {
   justify-content: flex-end;
   margin-top: 10px;
 }
-button {
+
+#bu {
   border-radius: 3px;
   border-color: rgb(122, 253, 253);
   background-color: rgb(122, 253, 253);
   box-shadow: 2px 2px 2px 1px rgb(181, 201, 207);
   font-size: 15px;
 }
-button:hover {
+#bu:hover {
   background-color: aqua;
   box-shadow: 2px 2px 2px 1px rgb(120, 194, 216);
 }
 #content {
-  height: 80%;
+  height: 50%;
+}
+#todoson{
+height: 30%;
+background-color: rgba(0, 1, 1, 0);
 }
 </style>

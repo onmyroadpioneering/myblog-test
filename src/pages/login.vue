@@ -2,9 +2,11 @@
 <div id="a">
   <div class="main" v-show="!pageflag">
     <div class="log" v-if="islog">
-      <label for="userid"><input type="text" placeholder="邮箱/用户名/手机" v-model="userid" class="inputt"></label><br>
-      <label for="pwd"><input type="password" class="inputt" placeholder="请输入密码" v-model="pwd" @keyup.enter="login"></label><br>
-      <label><button @click="login" class="butt">登录</button></label><br>
+      <label for="userid"><input type="text" placeholder="用户名" v-model="userid" class="inputt"></label><br>
+      
+      <label for="pwd">
+        <input type="password" class="inputt" placeholder="请输入密码" v-model="pwd" @keyup.enter="login"></label><br>
+      <label><a-button @click="login" class="butt" type="primary">登录</a-button></label><br>
       <label>没有账号？前往<a @click="translog">_注册_</a>或<a>_游客登录_</a></label>
     </div>
     <div class="log" v-if="!islog">
@@ -15,10 +17,18 @@
       <label id="logtext">注册完成...<a @click="translog">前往登录</a></label><br>
     </div>
   </div>
+  <div v-show="pageflag">
+    <el-avatar :icon="UserFilled" />
+    <el-avatar
+        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+      />
+    <el-avatar> user </el-avatar>
+  </div>
 </div> 
 </template>
 
 <script>
+
 export default {
   name: 'LogIn',
   components: {
@@ -33,7 +43,8 @@ export default {
       pageflag:false,
     }
   },
-  beforeMount(){
+  activated(){
+
     this.name = this.$store.state.name
     this.pageflag=this.$store.state.lever
     
@@ -68,15 +79,18 @@ export default {
 </script>
 
 <style scoped>
+#a{
+  position: relative;
+}
 .main{
-  position:absolute;
-  width: 40%;
-  height: 70%;
-  top: 50%;
-  left:50%;
-  background-color: rgba(235, 245, 220, 0.3);
+  position: flex;
+  margin-left: 50%;
+  margin-top: 50px;
+  width: 500px;
+  height: 400px;
+  background-color: rgba(181, 249, 149, 0.3);
   border-radius: 13px;
-  transform: translate(-50%,-50%);
+  transform: translateX(-50%);
   box-shadow: 4px 2px 2px 1px rgb(154, 154, 146);
   backdrop-filter: blur(5px);
 }
@@ -96,10 +110,21 @@ export default {
   margin-top: 5%;
   width: 80%;
 }
+
 .butt{
   margin-top: 5%;
   width: 80%;
   margin-bottom: 5%;
+  border-radius: 3px;
+  border-color: rgb(122, 253, 253);
+  background-color: rgb(122, 253, 253);
+  box-shadow: 2px 2px 2px 1px rgb(181, 201, 207);
+  font-size: 15px;
+  color: black;
+}
+.butt:hover {
+  background-color: aqua;
+  box-shadow: 2px 2px 2px 1px rgb(120, 194, 216);
 }
 label{
   margin-left: 10%;

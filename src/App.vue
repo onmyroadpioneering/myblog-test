@@ -11,6 +11,7 @@ export default {
   },
   mounted(){
     this.$store.state.isAuthenticated=true
+
   }
   /*mounted(){
     this.$router.push({
@@ -26,11 +27,20 @@ export default {
   body{
     margin: 0;
     /*background-image: url('./assets/sunset.jpg');*/
-    background-color: rgb(185, 185, 185);
+    background-color: rgb(255, 255, 255);
   }
   input{
     background-color: rgba(255, 255, 255, 0);
-  }
+  margin-top: 5%;
+  border: 0;
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px solid;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 30px;
+  outline: none;
+}
   ::-webkit-scrollbar{
     width: 5px;   /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
     background-color: #fff;

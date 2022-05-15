@@ -9,16 +9,20 @@ import todoDetails from '../pages/todoDetails'
 import store from '@/store'
 import logIN from '../pages/login'
 import echartsCic from '../pages/projects/echartsCic'
+import blogDetails from '../pages/blogs/blogDetails'
+
 const routes = [
 
     { path: '/',name:'main',meta:{title:'主页'}, component: mainPage ,children:[
-        { path: '/myblogs', name:'myblogs',meta:{title:'博客'},component: myBlog },
+        { path: '/myblogs', name:'myblogs',meta:{title:'博客'},component: myBlog ,children:[
+            {path:'blogdetails',name:'blogdetails',component:()=>blogDetails}
+        ]},
         { path: '/myprojects', name:'myprojects',meta:{title:'项目'},component: ()=>myProject,children:[
             {path:'echartscic',name:'echartscic',component:()=>echartsCic}
         ]},
         { path: '/mytest', name:'mytest',meta:{title:'测试'},component: ()=>myTest },
         { path: '/login', name:'login',meta:{title:'登录'},component: logIN },
-        { path: '/mytodos', name:'mytodos',meta:{title:'任务'},component: myTodos ,children:[
+        { path: '/mytodos', name:'mytodos',meta:{title:'任务'},component: ()=>myTodos ,children:[
             {path:'tododetails',name:'tododetails',component:todoDetails,props($route){
                 return{
                     id:$route.query.id
