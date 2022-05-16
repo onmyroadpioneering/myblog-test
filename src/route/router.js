@@ -18,13 +18,13 @@ const routes = [
         { path: '/myblogs', name:'myblogs',meta:{title:'博客'},component: ()=>myBlog ,children:[
             {path:'blogdetails',name:'blogdetails',component:()=>blogDetails,beforeEnter: (to, from, next) => {
                 // ...
-                if(store.state.nowuser){
+                if(store.state.islog){
                     console.log(from,to)
                     next({name:'ownBlog',query:{id:to.query.id,index:to.query.index}})}else{next()}
             }},
             {path:'ownblog',name:'ownBlog',component:()=>ownBlog,beforeEnter: (to, from, next) => {
                 // ...
-                if(store.state.nowuser){next()}else{next({name:'blogdetails',query:{id:to.query.id}})}
+                if(store.state.islog){next()}else{next({name:'blogdetails',query:{id:to.query.id}})}
             }
             },
             {path:'addblog',name:'addblog',component:addBlog},

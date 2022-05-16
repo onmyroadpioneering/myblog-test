@@ -1,17 +1,16 @@
 <template>
   <div id="main">
+    <div id="leftspace"></div>
     <div id="left">
       <div v-show="searchflag" id="header"><input @keyup.enter="select" v-model="selectitem"></div>
       <div v-show="!searchflag" id="header">
-        <button @click="search">查找</button>
-        <button @click="reset">重置</button>
+        <button @click="seato">查找</button>
         <button @click="increase">添加</button>
         <button @click="dele" id="delbu">删除</button>
-        <button @click="back">撤回</button>
       </div>
       <div id="content" class="list">
         <div id="content-inner">
-          <transition-group name="list-complete" tag="div">
+          <transition-group name="list-complete" tag="div" id="list-complete">
             <div v-for="(item, index) in todos" :key="item.name"
              id="items" draggable="true" 
              class="list-complete-item"
@@ -25,7 +24,9 @@
                     id: item.name ? item.name : '',
                   }
                 }" :id="item.name ? item.name : ''">{{ item.name }}</router-link>
-                <button style="display:none;" id="bu" class="bu" @click="del" :value="item.name">x</button>
+                <button style="visibility:hidden;" id="bu" class="bu" @click="del" :value="item.name">
+                x
+                </button>
               </div>
             </div>
           </transition-group>
@@ -53,7 +54,8 @@ export default {
       selectitem: '',
       dragIndex: '',
       enterIndex: '',
-      delflag : true
+      delflag : true,
+      seaflag:true,
     }
   },
   computed:{
@@ -73,6 +75,7 @@ export default {
       this.$store.state.uptodo = true
     },
     search() {
+      this.seaflag = !this.seaflag
       this.searchflag = !this.searchflag
     },
     select() {
@@ -91,7 +94,15 @@ export default {
       }
     },
     reset() {
+      this.seaflag = !this.seaflag
       this.todos = this.$store.state.todos
+    },
+    seato(){
+      if(this.seaflag){
+        this.search()
+        }else{
+          this.reset()
+          }
     },
     del(e) {
       this.$store.state.uptodo = true
@@ -128,19 +139,19 @@ export default {
         e.path[0].innerText='删除'
         if(a.length){
         for(let i=0;i<a.length;i++){
-          a[i].setAttribute('style','display:none;')
+          a[i].setAttribute('style','visibility:hidden;')
         }
       }else{
-        a.setAttribute('style','display:block;')
+        a.setAttribute('style','visibility:visible;')
       }
       }else{
         e.path[0].innerText='完成'
         if(a.length){
         for(let i=0;i<a.length;i++){
-          a[i].setAttribute('style','display:block;')
+          a[i].setAttribute('style','visibility:visible;')
         }
       }else{
-        a.setAttribute('style','display:none;')
+        a.setAttribute('style','visibility:hidden;')
       }
       }
       this.delfalg = !this.delfalg
@@ -173,27 +184,31 @@ export default {
   height: 80%;
 }
 #main {
-  position: relative;
+  
   height: 600px;
-  left: 10%;
-  width: 80%;
+  left: 5%;
+  width: 90%;
+  position: relative;
   display: flex;
   flex-wrap: nowrap;
   background-color: rgba(255, 249, 240, 0.7);
   border-radius: 10px;
   padding: 20px;
   backdrop-filter: blur(10px);
+  display: flex;
 }
-
+#list-complete{
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+}
 #left {
-  width: 25%;
   height: 100%;
   display: inline-block;
   border-right: 2px solid;
   border-color: white;
 
 }
-
 #right {
   width: 75%;
   height: 100%;
@@ -207,6 +222,7 @@ export default {
   border-bottom: 1px solid rgb(154, 165, 165);
   direction: ltr;
   margin-right: 20px;
+  
 }
 
 button {
@@ -214,15 +230,18 @@ button {
   
 }
 #bu {
+  height: 25px;
+  width: 25px;
   border-radius: 3px;
-  border-color: rgb(122, 253, 253);
-  background-color: rgb(122, 253, 253);
-  box-shadow: 2px 2px 2px 1px rgb(181, 201, 207);
-  font-size: 15px;
+  border-color: rgb(255, 255, 255);
+  background-color: rgba(122, 253, 253,0.5);
+  font-size: 10px;
+  transform: translateY(5px);
+  text-align: center;
 }
 #bu:hover {
   background-color: aqua;
-  box-shadow: 2px 2px 2px 1px rgb(120, 194, 216);
+
 }
 a {
   text-decoration: none
@@ -231,7 +250,8 @@ a {
 #header {
   margin-bottom: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+
 }
 
 #content {

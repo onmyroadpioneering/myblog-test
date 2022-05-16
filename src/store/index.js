@@ -8,6 +8,7 @@ export default createStore({
   state: {
     isAuthenticated: false,
     nowuser: 'ty',
+    islog:false,
     uptodo: false,
     blog: [
 
@@ -41,7 +42,7 @@ export default createStore({
 
       try {
         if (f == true) {
-          state.lever = true
+          
           this.dispatch('initBlog')
       
           this.dispatch('initTodoData')
@@ -84,6 +85,9 @@ export default createStore({
     logout(state, f){
       console.log(f)
       //router.push('/')
+    },
+    userlog(state){
+      state.islog = true
     }
 
   },
@@ -149,6 +153,10 @@ export default createStore({
        this.state.todos= []
        let a = true
        context.commit('logout',a)
+    },
+    userlog(context){
+      
+      context.commit('userlog')
     }
   },
   getters: {

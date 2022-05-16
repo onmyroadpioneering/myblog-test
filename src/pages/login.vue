@@ -58,6 +58,7 @@ export default {
     },
     login(){
       if(this.idflag){
+        this.$store.dispatch('userlog')
         this.$store.dispatch('userConfirm', {id:this.userid,pwd:this.pwd})   
       }
     },

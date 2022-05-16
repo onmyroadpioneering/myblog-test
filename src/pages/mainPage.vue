@@ -48,8 +48,12 @@ export default {
       
 
       return{
-          flag:false
+          flag:false,
+          user:''
       }
+  },
+  mounted(){
+    this.user = this.$store.state.nowuser
   }
   ,
 }

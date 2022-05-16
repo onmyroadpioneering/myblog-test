@@ -38,10 +38,13 @@ export default {
 
 .text {
     font-size: 14px;
+    height:50px;
+    padding-bottom: 10px;
 }
 
 .item {
     margin-bottom: 18px;
+    padding-bottom: 10px;
 }
 
 .box-card {

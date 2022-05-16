@@ -34,6 +34,7 @@ export default {
     methods: {
       changeblack(){
         console.log('black')
+        this.window.HTMLBodyElement.setAttribute('style','background-color:black;')
       }
     },
 }

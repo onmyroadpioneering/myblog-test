@@ -3,6 +3,7 @@
         <input type="text" v-model="title">
         <textarea v-model="contents" style="border:0;border-radius:5px;background-color:rgba(255, 249, 240, 0);width: 100%;height: 100%;padding: 10px;resize: none;border-style: none;outline: none;font-size:10px;"></textarea>
     </div>
+
     <button @click="saveblog">save</button>
     <userComment></userComment>
 
