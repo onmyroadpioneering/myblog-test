@@ -82,14 +82,13 @@ hr{
 .main{
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content:flex-end;
     align-items: stretch;
-
-    border-color: black;
+    /*border-color: black;*/
     z-index: 1000;
     box-shadow: 0px,0px,2px,2px,green;
 
@@ -97,14 +96,14 @@ hr{
 .maincopy{
   position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content:flex-end;
     align-items: stretch;
 
-    border-color: black;
+    /*border-color: black;*/
     z-index: 9;
     box-shadow: 0px,0px,2px,2px,green;
 }
@@ -112,13 +111,14 @@ hr{
     width: 50px;
     height: auto;
     flex-grow: 1;
-    line-height: 50px;
+    line-height: 40px;
     text-align: center;
 }
+/*
 .son:hover{
   background-color: rgba(143, 195, 241, 0.3);
   box-shadow: 0px,0px,10px,10px,green;
-}
+}*/
 #space{
     flex-grow: 20;
 }

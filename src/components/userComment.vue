@@ -29,15 +29,13 @@
       </span>
       <span key="comment-basic-reply-to">Reply to</span>
     </template>
-    <template #author><a>Han Solo</a></template>
+    <template #author><a>{{blogcomments[0].username}}</a></template>
     <template #avatar>
       <a-avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
     </template>
     <template #content>
       <p>
-        We supply a series of design principles, practical patterns and high quality design
-        resources (Sketch and Axure), to help people create their product prototypes beautifully and
-        efficiently.
+        {{blogcomments[0].commentcontent}}
       </p>
     </template>
     <template #datetime>
@@ -61,16 +59,22 @@ export default defineComponent({
     DislikeFilled,
     DislikeOutlined,
   },
+  onMounted(){
+    this.blogcomments = this.$store.state.comments
+  },
   setup() {
     const likes = ref(0);
     const dislikes = ref(0);
     const action = ref('');
+    const blogcomments = ref([''])
 
     const like = () => {
       likes.value = 1;
       dislikes.value = 0;
       action.value = 'liked';
     };
+    
+    
 
     const dislike = () => {
       likes.value = 0;
@@ -85,6 +89,7 @@ export default defineComponent({
       like,
       dislike,
       dayjs,
+      blogcomments,
     };
   },
 });

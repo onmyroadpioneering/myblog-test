@@ -6,12 +6,12 @@
         <button @click="search">查找</button>
         <button @click="reset">重置</button>
         <button @click="increase">添加</button>
-        <button @click="dele">删除</button>
+        <button @click="dele" id="delbu">删除</button>
         <button @click="back">撤回</button>
       </div>
       <div id="content" class="list">
         <div id="content-inner">
-          <transition-group name="list-complete" tag="p">
+          <transition-group name="list-complete" tag="div">
             <div v-for="(item, index) in todos" :key="item.name"
              id="items" draggable="true" 
              class="list-complete-item"
@@ -25,7 +25,7 @@
                     id: item.name ? item.name : '',
                   }
                 }" :id="item.name ? item.name : ''">{{ item.name }}</router-link>
-                <button v-show="delflag" id="bu" @click="del" :value="item.name">x</button>
+                <button style="display:none;" id="bu" class="bu" @click="del" :value="item.name">x</button>
               </div>
             </div>
           </transition-group>
@@ -55,6 +55,9 @@ export default {
       enterIndex: '',
       delflag : true
     }
+  },
+  computed:{
+  
   },
   activated(){
     this.todos = this.$store.state.todos
@@ -115,8 +118,34 @@ export default {
       //this.$router.push({name:'tododetails'})
       //this.todos=this.$store.state.todos
     },
-    dele() {
-      this.delfalg = true
+    dele(e) {
+      let a = document.getElementsByClassName('bu')
+      if(a.length==0){
+        return
+      }else{
+
+        if(this.delfalg){
+        e.path[0].innerText='删除'
+        if(a.length){
+        for(let i=0;i<a.length;i++){
+          a[i].setAttribute('style','display:none;')
+        }
+      }else{
+        a.setAttribute('style','display:block;')
+      }
+      }else{
+        e.path[0].innerText='完成'
+        if(a.length){
+        for(let i=0;i<a.length;i++){
+          a[i].setAttribute('style','display:block;')
+        }
+      }else{
+        a.setAttribute('style','display:none;')
+      }
+      }
+      this.delfalg = !this.delfalg
+      }
+      
     },
     dragenter(e, index) {
       e.preventDefault();
@@ -182,7 +211,7 @@ export default {
 
 button {
   float: right;
-
+  
 }
 #bu {
   border-radius: 3px;

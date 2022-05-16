@@ -2,10 +2,13 @@
 <div>
 
 <div v-show="!flag">
+<button @click="ret">back</button>
+  <div>
   <router-view></router-view>
-  <button @click="ret">back</button>
-
-  <addComment></addComment>
+  
+  </div>
+  <div>
+  </div>
 </div>
 
 
@@ -21,10 +24,10 @@
 <script>
 //import userComment from "../components/userComment.vue"
 import Blogdetail from "../components/blogDetail.vue"
-import addComment from "../components/addComment.vue"
+
 export default {
 
-    components: { Blogdetail,  addComment }
+    components: { Blogdetail,}
 ,
     data(){
       return{

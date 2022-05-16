@@ -1,15 +1,14 @@
 <template>  
     <div>
-        {{title}}
-        ----{{contents}}
+        <input type="text" v-model="title">
+        <textarea v-model="contents"></textarea>
     </div>
-    <addComment></addComment>
-
+    <userComment></userComment>
 
 </template>
 
 <script>
-import addComment from "../../components/addComment.vue"
+import userComment from "@/components/userComment.vue"
 export default {
     data(){
         return{
@@ -18,9 +17,8 @@ export default {
         }
     },
     components:{
-        addComment
+        userComment
     },
-
     mounted(){
         this.title = this.$route.query.id
         let a = this.$store.state.blog.find((item)=>item.title == this.$route.query.id)

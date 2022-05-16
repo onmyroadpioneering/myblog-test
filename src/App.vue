@@ -11,7 +11,11 @@ export default {
   },
   mounted(){
     this.$store.state.isAuthenticated=true
-
+    let a = localStorage.getItem('user')
+    if(a){
+      this.$store.state.nowuser = a
+    }
+    console.log('2'<'100')
   }
   /*mounted(){
     this.$router.push({

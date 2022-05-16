@@ -10,12 +10,23 @@ import store from '@/store'
 import logIN from '../pages/login'
 import echartsCic from '../pages/projects/echartsCic'
 import blogDetails from '../pages/blogs/blogDetails'
+import ownBlog from '../pages/blogs/ownBlog'
 
 const routes = [
 
     { path: '/',name:'main',meta:{title:'主页'}, component: mainPage ,children:[
-        { path: '/myblogs', name:'myblogs',meta:{title:'博客'},component: myBlog ,children:[
-            {path:'blogdetails',name:'blogdetails',component:()=>blogDetails}
+        { path: '/myblogs', name:'myblogs',meta:{title:'博客'},component: ()=>myBlog ,children:[
+            {path:'blogdetails',name:'blogdetails',component:()=>blogDetails,beforeEnter: (to, from, next) => {
+                // ...
+                if(store.state.nowuser){
+                    console.log(from,to)
+                    next({name:'ownBlog',query:{id:to.query.id}})}else{next()}
+            }},
+            {path:'ownblog',name:'ownBlog',component:()=>ownBlog,beforeEnter: (to, from, next) => {
+                // ...
+                if(store.state.nowuser){next()}else{next({name:'blogdetails',query:{id:to.query.id}})}
+            }
+            }
         ]},
         { path: '/myprojects', name:'myprojects',meta:{title:'项目'},component: ()=>myProject,children:[
             {path:'echartscic',name:'echartscic',component:()=>echartsCic}
@@ -54,6 +65,5 @@ router.beforeEach((to,from,next) => {
     }else{
         next()
     }
-    // 如果用户未能验证身份，则 `next` 会被调用两次
   })
 

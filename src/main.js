@@ -24,6 +24,10 @@ app.use(List)
 app.use(Button)
 app.use(Form)
 app.use(Input)
-
 //app.use(VueLazyload)
+app.config.warnHandler = function(msg) {//msg, vm, trace
+    // `trace` 是组件的继承关系追踪
+    console.log(msg)
+  }
 app.mount('#app')
+
