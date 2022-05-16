@@ -137,5 +137,24 @@ export default (req) => {
                         });
                     })
                 }
+            case 'updateblog':
+                {
+                console.log(req)
+                return new Promise((resolve, reject) => {
+                    axios.post('http://82.156.239.180:3000/blog', qs.stringify(
+                        {
+                            id:req.id,
+                            updateblog:req.list
+
+                        },{
+                            indices:false
+                        }
+                    )).then((response) => {
+                        resolve(response)
+                    }).catch((error) => {
+                        reject(error)
+                    });
+                })
+            }
     }
 } 

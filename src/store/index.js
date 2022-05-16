@@ -7,7 +7,7 @@ import { router } from '@/route/router'
 export default createStore({
   state: {
     isAuthenticated: false,
-    nowuser: '',
+    nowuser: 'ty',
     uptodo: false,
     blog: [
 
@@ -77,6 +77,13 @@ export default createStore({
     },
     uptodo(state, f) {
       console.log(f)
+    },
+    upblog(state, f){
+      console.log(f)
+    },
+    logout(state, f){
+      console.log(f)
+      //router.push('/')
     }
 
   },
@@ -129,6 +136,19 @@ export default createStore({
       request({ name: 'updatedata', id: this.state.nowuser, list: this.state.todos }).then((res) => {
         context.commit('uptodo', res.data)
       }).catch(error => console.log(error))
+    },
+    updateblog(context){
+      request({ name: 'updateblog', id: this.state.nowuser, list: this.state.blog}).then((res) => {
+        context.commit('upblog', res.data)
+      }).catch(error => console.log(error))
+    },
+    logout(context){
+      this.state.nowuser=''
+      this.state.uptodo=false
+      this.state.blog=[]
+       this.state.todos= []
+       let a = true
+       context.commit('logout',a)
     }
   },
   getters: {

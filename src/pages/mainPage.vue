@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
 import myResume from '../components/myResume.vue'
 import MyFooter from '../components/myFooter.vue'
 export default {
@@ -45,11 +44,11 @@ export default {
     myResume,
     MyFooter
 },
-  setup(){
-      const flag =ref(false)
+  data(){
+      
 
       return{
-          flag
+          flag:false
       }
   }
   ,
@@ -59,7 +58,7 @@ export default {
 <style scoped>
 .resume-enter-active,
 .resume-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 
 .resume-enter-from,
@@ -69,7 +68,7 @@ export default {
 
 .routeview-enter-active,
 .routeview-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease;
 }
 
 .routeview-enter-from,

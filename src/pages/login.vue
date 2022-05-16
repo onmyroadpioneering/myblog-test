@@ -18,11 +18,8 @@
     </div>
   </div>
   <div v-show="pageflag">
-    <el-avatar :icon="UserFilled" />
-    <el-avatar
-        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-      />
-    <el-avatar> user </el-avatar>
+    <el-avatar> {{user}} </el-avatar>
+    <a @click="logout">注销</a>
   </div>
 </div> 
 </template>
@@ -41,12 +38,18 @@ export default {
       pwd:'',
       pwdcf:'',
       pageflag:false,
+      user:'user'
     }
   },
   activated(){
-
+    this.user=this.$store.state.nowuser
     this.name = this.$store.state.name
-    this.pageflag=this.$store.state.lever
+    if(this.$store.state.nowuser){
+      this.pageflag=true
+    }else{
+        this.pageflag=false
+    }
+   
     
   },
   methods:{
@@ -63,6 +66,9 @@ export default {
         this.$store.dispatch('userRegister', {id:this.userid,pwd:this.pwd})
       }
     },
+    logout(){
+      this.$store.dispatch('logout')
+    }
   },
   watch:{
     

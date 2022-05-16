@@ -11,7 +11,7 @@ import logIN from '../pages/login'
 import echartsCic from '../pages/projects/echartsCic'
 import blogDetails from '../pages/blogs/blogDetails'
 import ownBlog from '../pages/blogs/ownBlog'
-
+import addBlog from '../pages/blogs/addBlog'
 const routes = [
 
     { path: '/',name:'main',meta:{title:'主页'}, component: mainPage ,children:[
@@ -20,13 +20,14 @@ const routes = [
                 // ...
                 if(store.state.nowuser){
                     console.log(from,to)
-                    next({name:'ownBlog',query:{id:to.query.id}})}else{next()}
+                    next({name:'ownBlog',query:{id:to.query.id,index:to.query.index}})}else{next()}
             }},
             {path:'ownblog',name:'ownBlog',component:()=>ownBlog,beforeEnter: (to, from, next) => {
                 // ...
                 if(store.state.nowuser){next()}else{next({name:'blogdetails',query:{id:to.query.id}})}
             }
-            }
+            },
+            {path:'addblog',name:'addblog',component:addBlog},
         ]},
         { path: '/myprojects', name:'myprojects',meta:{title:'项目'},component: ()=>myProject,children:[
             {path:'echartscic',name:'echartscic',component:()=>echartsCic}

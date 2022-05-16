@@ -7,7 +7,7 @@
                         <span>{{title}}</span>
                     </div>
                 </template>
-                <div v-for="(item,index) in content" :key="index" class="text item">{{ item }}</div>
+                <div class="text item">{{ content }}</div>
             </el-card>
             </div>
         </template>
@@ -24,7 +24,7 @@ export default {
     },
     props:{
             title:String,
-            content:Array,
+            content:String,
     }
 }
 </script>
