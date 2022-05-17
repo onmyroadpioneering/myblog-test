@@ -31,9 +31,6 @@ export default {
 
     }
   },
-  mounted(){
-    
-  },
   methods:{
     topro(e){
       this.proflag=!this.proflag
@@ -46,6 +43,12 @@ export default {
     }
     
   },
+  activated(){
+    this.proflag = true
+  },
+  mounted(){
+    this.proflag = true
+  }
 }
 </script>
 
