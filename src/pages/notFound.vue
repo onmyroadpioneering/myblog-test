@@ -1,8 +1,6 @@
 <template>
   <div class="notf">
-      <p>{{$route.params.pathMatch[0]}}不存在</p><br>
-      <p>请不要乱输地址</p><br>
-      <p>404 not found</p>  
+      <p>{{$route.params.pathMatch[0]}} not found</p><br> 
   </div>
 </template>
 

@@ -1,7 +1,6 @@
-import { defineStore } from 'pinia'
 import { createStore } from 'vuex'
 import request from '../api/request'
-import { router } from '@/route/router'
+//import { router } from '@/route/router'
 
 
 export default createStore({
@@ -46,7 +45,6 @@ export default createStore({
           this.dispatch('initBlog')
       
           this.dispatch('initTodoData')
-          router.push('mytodos')
         } else {
           state.lever = false
           alert('登录失败')
@@ -68,22 +66,19 @@ export default createStore({
       }
     },
     initTodoData(state, f) {
-      console.log(f)
       state.todos = f
-      
     },
     initBlog(state, f) {
-      console.log(f)
       state.blog=f.blog
     },
     uptodo(state, f) {
-      console.log(f)
+      return f
     },
     upblog(state, f){
-      console.log(f)
+      return f
     },
     logout(state, f){
-      console.log(f)
+      return f
       //router.push('/')
     },
     userlog(state){
@@ -131,7 +126,6 @@ export default createStore({
     },
     initBlog(context) {
       request({ name: 'initblog', id: this.state.nowuser }).then((res) => {
-        console.log(res)
         context.commit('initBlog', res.data[0])
 
       }).catch(error => console.log(error))
@@ -155,7 +149,6 @@ export default createStore({
        context.commit('logout',a)
     },
     userlog(context){
-      
       context.commit('userlog')
     }
   },
@@ -165,19 +158,4 @@ export default createStore({
     }
   }
 
-})
-
-
-
-
-export const useCounterStore = defineStore('counter', {
-  state: () => ({ count: 0 }),
-  getters: {
-    double: state => state.count * 2,
-  },
-  actions: {
-    increment() {
-      this.count++
-    },
-  },
 })

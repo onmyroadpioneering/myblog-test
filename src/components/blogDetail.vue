@@ -7,7 +7,7 @@
                         <span>{{title}}</span>
                     </div>
                 </template>
-                <div class="text item">{{ content }}</div>
+                <div class="text item">{{content}}</div>
             </el-card>
             </div>
         </template>
@@ -38,7 +38,7 @@ export default {
 
 .text {
     font-size: 14px;
-    height:50px;
+    height:55px;
     padding-bottom: 10px;
 }
 

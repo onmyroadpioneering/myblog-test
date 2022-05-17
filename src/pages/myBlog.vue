@@ -30,11 +30,12 @@
 </template>
 
 <script>
-//import userComment from "../components/userComment.vue"
+
 import Blogdetail from "../components/blogDetail.vue"
-
-export default {
-
+export default 
+  
+ {
+   name:'myBlog',
     components: { Blogdetail,}
 ,
     data(){
@@ -80,6 +81,8 @@ export default {
 
     }
 }
+
+
 </script>
 
 <style scoped>

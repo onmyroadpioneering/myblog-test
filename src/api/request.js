@@ -6,7 +6,7 @@ export default (req) => {
             {
                 console.log(req)
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/user', {
+                    axios.get('https://82.156.239.180:3000/user', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -31,7 +31,7 @@ export default (req) => {
                 params.append('pwd', req.pwd)
                 return new Promise((resolve, reject) => {
                     
-                    axios.post('http://82.156.239.180:3000/users',
+                    axios.post('https://82.156.239.180:3000/users',
                     params
                     ).then((response) => {
                         resolve(response)
@@ -58,9 +58,9 @@ export default (req) => {
             }
         case 'inituser':
             {
-                console.log(req)
+  
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/', {
+                    axios.get('https://82.156.239.180:3000/', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -74,9 +74,9 @@ export default (req) => {
             }
         case 'initdata':
             {
-                console.log(req)
+  
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/todo', {
+                    axios.get('https://82.156.239.180:3000/todo', {
                         params: {
                             id: req.id
                         }
@@ -89,9 +89,9 @@ export default (req) => {
             }
         case 'updatedata':
             {
-                console.log(req)
+     
                 return new Promise((resolve, reject) => {
-                    axios.post('http://82.156.239.180:3000/todo', qs.stringify(
+                    axios.post('https://82.156.239.180:3000/todo', qs.stringify(
                         {
                             id:req.id,
                             updatetodo:req.list
@@ -108,9 +108,9 @@ export default (req) => {
             }
         case 'updateuser':
             {
-                console.log(req)
+   
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/', {
+                    axios.get('https://82.156.239.180:3000/', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -124,9 +124,9 @@ export default (req) => {
             }
             case 'initblog':
                 {
-                    console.log(req)
+ 
                     return new Promise((resolve, reject) => {
-                        axios.get('http://82.156.239.180:3000/blog', {
+                        axios.get('https://82.156.239.180:3000/blog', {
                             params: {
                                 id: req.id
                             }
@@ -139,9 +139,9 @@ export default (req) => {
                 }
             case 'updateblog':
                 {
-                console.log(req)
+       
                 return new Promise((resolve, reject) => {
-                    axios.post('http://82.156.239.180:3000/blog', qs.stringify(
+                    axios.post('https://82.156.239.180:3000/blog', qs.stringify(
                         {
                             id:req.id,
                             updateblog:req.list

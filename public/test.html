@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<head></head>
+<head>
+    <script src="//y.gtimg.cn/music/h5/player/player.js?max_age=2592000"></script>
+</head>
 
 <body>
 
 </body>
 <script type="text/javascript">
+    var player = new QMplayer();
+// 播放歌曲
+player.play("001wTaoI3nvudv");
+
+// 监听事件
+player.on("play", function () { })
+
     const pall = function(){
 			let flag = true
 			const arr = [...arguments]

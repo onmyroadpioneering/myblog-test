@@ -42,7 +42,9 @@
 <script>
 
 //import TodoList from '../components/todoList.vue';
-export default {
+export default
+  {
+    name:'myTodos',
   components: {
     //TodoList
   },
@@ -110,31 +112,21 @@ export default {
       if (e.srcElement._value.toString()) {
         str = e.srcElement._value.toString()
       } else {
-        // console.log(e) 
         str = ''
       }
-
-      //console.log(str)
       this.$store.dispatch('deleteTodo', str)
       let delInd = 0
       this.todos.forEach((value, index) => { if (value.name == str) { delInd = index } })
-      // console.log(delInd)
       this.todos.splice(+delInd, 1)
-      //console.log(this.$route.query.id)
-
       if (this.$route.query.id == str) {
-
         this.$router.push({ name: 'tododetails' })
       }
-      //this.$router.push({name:'tododetails'})
-      //this.todos=this.$store.state.todos
     },
     dele(e) {
       let a = document.getElementsByClassName('bu')
       if(a.length==0){
         return
       }else{
-
         if(this.delfalg){
         e.path[0].innerText='删除'
         if(a.length){
@@ -174,7 +166,6 @@ export default {
     dragover: (e) => {
       e.preventDefault()
     }
-
   }
 }
 </script>
