@@ -13,7 +13,7 @@
 
 
 <div v-show="flag">
-  <div v-for="(item, index) in blog" :key="index" :value="item.title" @click="jump">
+  <div v-for="(item, index) in blog" :key="index" :value="item.title" @click="jump($event,index)">
     <Blogdetail :title="item.title" :content="item.content" />
   </div>
 
@@ -54,16 +54,15 @@ export default
       next()
     },
     methods: {
-      jump(e){
-
+      
+      jump(e,m){
         this.flag = false
-        let a = e.path.length-10
         if(e.path.length == 15){
-          this.$router.push({name:'blogdetails',query:{id:e.path[0].innerText,index:e.path[a].__vnode.key}})
+          this.$router.push({name:'blogdetails',query:{id:e.path[0].innerText,index:m}})
         }else if(e.path.length == 14){
-          this.$router.push({name:'blogdetails',query:{id:e.path[2].firstChild.innerText,index:e.path[a].__vnode.key}})
+          this.$router.push({name:'blogdetails',query:{id:e.path[2].firstChild.innerText,index:m}})
         }else{
-          this.$router.push({name:'blogdetails',query:{id:e.path[1].children[0].innerText,index:e.path[a].__vnode.key}})
+          this.$router.push({name:'blogdetails',query:{id:e.path[1].children[0].innerText,index:m}})
         }
         
         //e.path[2].firstChild.innerText}

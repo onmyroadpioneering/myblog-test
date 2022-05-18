@@ -34,7 +34,14 @@ export default {
   methods:{
     topro(e){
       this.proflag=!this.proflag
-      this.$router.push({name:'echartscic',query:{id:e.path[0].innerText}})
+      if(e.path[0].innerText==1){
+          this.$router.push({name:'echartscic',query:{id:e.path[0].innerText}})
+      }else if(e.path[0].innerText==5){
+        this.$router.push({name:'mapgl',query:{id:e.path[0].innerText}})
+      }else{
+        this.$router.push({name:'prodetails',query:{id:e.path[0].innerText}})
+      }
+      
     }
   },
   beforeRouteUpdate(to){

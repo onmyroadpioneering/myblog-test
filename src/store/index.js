@@ -37,7 +37,6 @@ export default createStore({
       })
     },
     userCon(state, f) {
-      console.log(f)
 
       try {
         if (f == true) {

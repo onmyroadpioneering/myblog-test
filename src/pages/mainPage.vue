@@ -42,7 +42,7 @@ import MyFooter from '../components/myFooter.vue'
 export default {
   components: {
     myResume,
-    MyFooter
+    MyFooter,
 },
   data(){
       

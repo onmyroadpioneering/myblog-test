@@ -12,6 +12,8 @@ import echartsCic from  '@/pages/projects/echartsCic'
 import blogDetails from  '@/pages/blogs/blogDetails'
 import ownBlog from  '@/pages/blogs/ownBlog'
 import addBlog from  '@/pages/blogs/addBlog'
+import prodetails from '@/pages/projects/proDetails'
+import mapGl from '@/pages/projects/mapGl'
 
 const routes = [
 
@@ -30,7 +32,9 @@ const routes = [
             {path:'addblog',name:'addblog',component:addBlog},
         ]},
         { path: '/myprojects', name:'myprojects',meta:{title:'项目'},component: myProject,children:[
-            {path:'echartscic',name:'echartscic',component:echartsCic}
+            {path:'echartscic',name:'echartscic',component:echartsCic},
+            {path:'mapgl',name:'mapgl',component:mapGl},
+            {path:'prodetails',name:'prodetails',component:prodetails}
         ]},
         { path: '/mytest', name:'mytest',meta:{title:'测试'},component: myTest },
         { path: '/login', name:'login',meta:{title:'登录'},component: logIN },

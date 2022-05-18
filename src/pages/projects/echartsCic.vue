@@ -1,16 +1,14 @@
 <template>
   <div id="proj">
-    <div v-show="this.id=='1'">
+    <div>
       <div id="main" style="width: 80%; height: 500px"></div>
     </div>
-    <div v-show="this.id=='2'">
-        <transDemo></transDemo>
-    </div>
+    
   </div>
 </template>
 
 <script>
-import transDemo from "./transDemo.vue";
+//import transDemo from "./transDemo.vue";
 import * as echarts from "echarts";
 
 export default {
@@ -20,7 +18,11 @@ export default {
     };
   },
   components:{
-    transDemo,
+   /* transDemo,
+   <div v-if="this.id=='2'">
+        <transDemo></transDemo>
+    </div>
+   */
 
 },  
   mounted() {
