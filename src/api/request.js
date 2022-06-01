@@ -5,7 +5,7 @@ export default (req) => {
         case 'commit':
             {
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/user', {
+                    axios.get('https://www.tengyan.cloud/user', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -29,7 +29,7 @@ export default (req) => {
                 params.append('pwd', req.pwd)
                 return new Promise((resolve, reject) => {
                     
-                    axios.post('http://82.156.239.180:3000/users',
+                    axios.post('https://www.tengyan.cloud/users',
                     params
                     ).then((response) => {
                         resolve(response)
@@ -58,7 +58,7 @@ export default (req) => {
             {
   
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/', {
+                    axios.get('https://www.tengyan.cloud/', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -74,7 +74,7 @@ export default (req) => {
             {
   
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/todo', {
+                    axios.get('https://www.tengyan.cloud/todo', {
                         params: {
                             id: req.id
                         }
@@ -89,7 +89,7 @@ export default (req) => {
             {
      
                 return new Promise((resolve, reject) => {
-                    axios.post('http://82.156.239.180:3000/todo', qs.stringify(
+                    axios.post('https://www.tengyan.cloud/todo', qs.stringify(
                         {
                             id:req.id,
                             updatetodo:req.list
@@ -108,7 +108,7 @@ export default (req) => {
             {
    
                 return new Promise((resolve, reject) => {
-                    axios.get('http://82.156.239.180:3000/', {
+                    axios.get('https://www.tengyan.cloud/', {
                         params: {
                             id: req.id,
                             pwd: req.pwd,
@@ -124,7 +124,7 @@ export default (req) => {
                 {
  
                     return new Promise((resolve, reject) => {
-                        axios.get('http://82.156.239.180:3000/blog', {
+                        axios.get('https://www.tengyan.cloud/blog', {
                             params: {
                                 id: req.id
                             }
@@ -139,7 +139,7 @@ export default (req) => {
                 {
        
                 return new Promise((resolve, reject) => {
-                    axios.post('http://82.156.239.180:3000/blog', qs.stringify(
+                    axios.post('https://www.tengyan.cloud/blog', qs.stringify(
                         {
                             id:req.id,
                             updateblog:req.list
